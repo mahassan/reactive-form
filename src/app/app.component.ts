@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LabsDetailsComponent } from './labs-details.component';
 
 @Component({
   selector: 'lgc-labs-root',
@@ -8,23 +9,43 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class AppComponent implements OnInit {
   title = 'lgc-labs';
+  labTypes = ['small','medium','large'];
   labForm : FormGroup;
-  labs = {
-    Id:'',
-    name : ''
-  }
 
+
+  private labsArray = [];
+  submitted = false;
   ngOnInit(){
     this.labForm = new FormGroup({
-      'labName': new FormControl(null,[Validators.required,Validators.maxLength(30)])
+      'labName': new FormControl('',[Validators.required,Validators.maxLength(30)]),
+      'labSize': new FormControl('',Validators.required),
+      'isJoining': new FormControl(true)
     })
   }
 
-  onSubmit(){
-    console.log(this.labForm);
-    //console.log(this.labs.Id += ;
-    this.labs.name = this.labForm.value.labName;
-    this.labForm.reset();
+  onRowEdit(event){
+    var data = this.labsArray[event.index];
+console.log(this.labsArray[event.index]);
+this.labForm.setValue({
+  'labName':data.labName,
+  'labSize':data.labSize,
+  'isJoining':data.isJoining =='yes' 
+});
   }
 
+  onSubmit(value){
+    console.log(this.labForm);
+    if(this.labForm.valid){
+    this.submitted = true;
+  
+    this.labsArray.push({
+'labName':this.labForm.value.labName,
+'labSize':this.labForm.value.labSize,
+'isJoining':this.labForm.value.isJoining ? 'yes' :'no'   });
+   /* this.labs.name.push(this.labForm.value.labName);
+    this.labs.type.push(this.labForm.value.labSize);
+    this.labs.isJoining.push(this.labForm.value.isJoining);*/
+    this.labForm.reset();
+    }
+  }
 }

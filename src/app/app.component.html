@@ -16,13 +16,21 @@
   </div>
   <div class="form-group">
     <label for="">Lab Type</label>
-      <select name="" id="" class="form-control">
-          <option value=""></option>
-      </select>
+    <select name="labSize" id="" formControlName="labSize">
+        <option value="">Select Option</option>
+      <option *ngFor="let sizes of labTypes">
+        {{sizes}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="isJoinng">Is Joining?</label>
+    <input type="checkbox" name="isJoining" formControlName="isJoining">
   </div>
   <button type="submit" class="btn btn-success">Insert</button>
+  
 </form>
-{{labs.name}}
-</div>
 
+
+<labs-details [data]="labsArray" (edit-this)="onRowEdit($event)"></labs-details>
 
