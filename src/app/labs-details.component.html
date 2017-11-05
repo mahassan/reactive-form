@@ -1,0 +1,10 @@
+<table class="table table-inverse" >
+        <tr *ngFor="let info of data;let i = index;" >
+          <th>{{i+1}}</th>
+          <th>{{info.labName}}</th>
+          <th>{{info.labSize}}</th>
+          <th>{{info.isJoining}}</th>
+          <th (click)="editRow(i)">Edit</th>
+        </tr>
+      </table>
+      
