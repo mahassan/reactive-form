@@ -25,8 +25,8 @@ export class AppComponent implements OnInit {
 
   onRowEdit(event){
     var data = this.labsArray[event.index];
-console.log(this.labsArray[event.index]);
-this.labForm.setValue({
+  console.log(this.labsArray[event.index]);
+  this.labForm.setValue({
   'labName':data.labName,
   'labSize':data.labSize,
   'isJoining':data.isJoining =='yes' 
@@ -39,9 +39,10 @@ this.labForm.setValue({
     this.submitted = true;
   
     this.labsArray.push({
-'labName':this.labForm.value.labName,
-'labSize':this.labForm.value.labSize,
-'isJoining':this.labForm.value.isJoining ? 'yes' :'no'   });
+    'labName':this.labForm.value.labName,
+    'labSize':this.labForm.value.labSize,
+    'isJoining':this.labForm.value.isJoining ? 'yes' :'no'   
+});
    /* this.labs.name.push(this.labForm.value.labName);
     this.labs.type.push(this.labForm.value.labSize);
     this.labs.isJoining.push(this.labForm.value.isJoining);*/
