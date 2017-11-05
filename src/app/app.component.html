@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div style="text-align:center" class="jumbotron">
   <h1>
     Welcome to {{title}}!
   </h1>
@@ -7,7 +7,7 @@
   <div class="container">
   <form [formGroup]="labForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="">Name</label>
+    <label for="labName" class="hidden-sm-down">Name</label>
     <input type="text" name="labName" class="form-control" formControlName="labName">
     <span *ngIf="!labForm.get('labName').valid && labForm.get('labName').touched"
     class="alert alert">
@@ -15,19 +15,19 @@
     </span>
   </div>
   <div class="form-group">
-    <label for="">Lab Type</label>
-    <select name="labSize" id="" formControlName="labSize">
+    <label for="labSize" class="hidden-sm-down">Lab Type</label>
+    <select name="labSize" id="" formControlName="labSize" class="form-control">
         <option value="">Select Option</option>
       <option *ngFor="let sizes of labTypes">
         {{sizes}}
       </option>
     </select>
   </div>
-  <div class="form-group">
-    <label for="isJoinng">Is Joining?</label>
+  <div class="form-check">
+    <label for="isJoinng"  class="hidden-sm-down">Is Joining?</label>
     <input type="checkbox" name="isJoining" formControlName="isJoining">
   </div>
-  <button type="submit" class="btn btn-success">Insert</button>
+  <button type="submit" class="btn btn-success mb-5">Save</button>
   
 </form>
 

@@ -1,10 +1,11 @@
-<table class="table table-inverse" >
-        <tr *ngFor="let info of data;let i = index;" >
-          <th>{{i+1}}</th>
-          <th>{{info.labName}}</th>
-          <th>{{info.labSize}}</th>
-          <th>{{info.isJoining}}</th>
-          <th (click)="editRow(i)">Edit</th>
+<div class="container">
+<table class="table table-striped" >
+        <tr *ngFor="let info of data;let i = index;"  (dblclick)="editRow(i)" >
+          <th scope="col">{{i+1}}</th>
+          <td>{{info.labName}}</td>
+          <td>{{info.labSize}}</td>
+          <td>{{info.isJoining}}</td>
+          <!-- <td>Edit</td> -->
         </tr>
       </table>
-      
+ </div>
